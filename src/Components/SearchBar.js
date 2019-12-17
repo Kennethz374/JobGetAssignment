@@ -1,38 +1,9 @@
 import React, { useState, useEffect } from "react";
 import {FormControl, InputLabel, Input, Button, Paper} from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
 import axios from "axios";
 import Results from "./Results";
-import { Icon, Pagination } from 'semantic-ui-react';
-
-
-const useStyles = makeStyles(theme => ({
-  search:{
-    borderRadius:theme.spacing(1),
-    display:"flex",
-    margin:"auto",
-  },
-  form: {
-    display:"inline flex",
-    width:"100%",
-  },
-  submit:{
-    width: "100%", 
-      [theme.breakpoints.up('md')]:{
-        width: "10%"
-      },
-    marginTop: theme.spacing(4),
-    marginLeft: theme.spacing(2)
-  },
-  left:{
-    padding:theme.spacing(2),
-    width:"40%",
-  },
-  right: {
-    padding:theme.spacing(2),
-    width:"40%",
-  }
-}));
+import { Pagination } from 'semantic-ui-react';
+import useStyles from "../Styles/SearchBarStyles"
 
 
 export default function SearchBar(props) {
@@ -62,7 +33,6 @@ export default function SearchBar(props) {
       behavior: "smooth"
     });
   }
-
   return (
     <>
     <Paper>
@@ -90,7 +60,7 @@ export default function SearchBar(props) {
     </Paper>
 
 
-    {data.results? <Results results={data.results}/> : <></>}
+    { (data.results) ? <Results results={data.results}/> : <h1></h1>}
     {data.results? 
         <Pagination   
         onPageChange={handlePaginationChange}
