@@ -6,7 +6,7 @@ export default function Results({results}) {
 
       results.map(result => {
       return <Job 
-      key={result.id} 
+      key={result.id}
       companyName={result.hiring_company.name} 
       location={result.location} 
       title={result.name} 

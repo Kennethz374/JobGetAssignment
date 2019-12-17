@@ -38,34 +38,27 @@ const useStyles = makeStyles(theme => ({
 export default function SearchBar(props) {
   const [job, setJob] = useState("");
   const [city, setCity] = useState("");
-  const [page, setPage] = useState(1)
+  const [page] = useState(1)
   const [data, setData] = useState({});
   const classes = useStyles();
 
   const handleSearch = (job,city,page) => {
-    axios.get(`https://api.ziprecruiter.com/jobs/v1?search=${job}&location=${city}&api_key=mthpyw9ea7zyswfuj3zur6bt55fce7qf&page=${page}`)
+    axios.get(`https://api.ziprecruiter.com/jobs/v1?search=${job}&location=${city}&api_key=mthpyw9ea7zyswfuj3zur6bt55fce7qf&page=${page}&jobs_per_page=10`)
     .then(response=> {
       setData(()=>({
         results:response.data.jobs,
-        pagination: Math.round(response.data.total_jobs / 20)
+        pagination: Math.round(response.data.total_jobs / 10)
       }))
     })
   }
-  useEffect((job,city,page)=>{
-    axios.get(`htps://api.ziprecruiter.com/jobs/v1?search=${job}&location=${city}&api_key=mthpyw9ea7zyswfuj3zur6bt55fce7qf&page=${page}`)
-    .then(response=> {
-      setData(()=>({
-        results:response.data.jobs,
-        pagination: Math.round(response.data.total_jobs / 20)
-      }))
-  },[page])
-  })
+
   const handlePaginationChange = (e, data) => {
-    setPage(data.activePage)
-    console.log("page",page)
+    handleSearch(job,city,data.activePage)
+    setTimeout(function() {
+      console.log("page",page);
+    }, 2000);
   }
 
-  console.log("job",job, "city", city, "data", (data.results), "page",page)
   return (
     <>
     <Paper>
@@ -96,8 +89,8 @@ export default function SearchBar(props) {
     {data.results? <Results results={data.results}/> : <></>}
     {data.results? 
         <Pagination   
-        onPageChange={()=>handlePaginationChange}
-        defaultActivePage={1} 
+        onPageChange={handlePaginationChange}
+        defaultActivePage={page} 
         totalPages={data.pagination} />
       : 
         <></>}

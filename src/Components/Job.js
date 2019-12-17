@@ -10,7 +10,7 @@ import Typography from '@material-ui/core/Typography';
 
 const useStyles = makeStyles(theme => ({
   paper:{
-    padding: theme.spacing.unit * 1,
+    padding: theme.spacing(1),
     display:"flex",
     flexDirection: "column",
     alignItems: "center",
@@ -46,12 +46,12 @@ const useStyles = makeStyles(theme => ({
   button:{
     backgroundColor:"teal",
     margin:"auto",
-    padding:theme.spacing.unit * 1,
+    padding:theme.spacing(1),
     width:"85%",
   }
 }));
 
-export default function Job({key,companyName, location,name, min, max, snippet, posted}) {
+export default function Job({companyName, location,name, min, max, snippet, posted}) {
   const classes = useStyles();
 
   function createMarkup() {
@@ -60,7 +60,7 @@ export default function Job({key,companyName, location,name, min, max, snippet, 
 
   return (
     <>
-    <Paper className={classes.paper} key={key}>
+    <Paper className={classes.paper}>
       
       <Card className={classes.card}>
 
@@ -81,7 +81,7 @@ export default function Job({key,companyName, location,name, min, max, snippet, 
           <br/>
           ${min} - {max}
         </Typography>
-        <Typography variant="body3" component="p">
+        <Typography>
           Posted: {posted}
         </Typography>
       <CardActions>
