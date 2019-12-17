@@ -1,5 +1,4 @@
 import React from 'react';
-import Job from "./Components/Job"
 import SearchBar from "./Components/SearchBar"
 
 function App() {

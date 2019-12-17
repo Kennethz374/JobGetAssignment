@@ -2,6 +2,7 @@ import React from "react";
 import Job from "./Job";
 
 export default function Results({results}) {
+  
     return results.map(result => {
       return <Job key={result.id} 
       companyName={result.hiring_company.name} 

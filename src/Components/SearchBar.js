@@ -50,12 +50,13 @@ export default function SearchBar(props) {
     axios.get(`https://api.ziprecruiter.com/jobs/v1?search=${job}&location=${city}&api_key=mthpyw9ea7zyswfuj3zur6bt55fce7qf`)
     .then(response=> {
       setData(()=>({
-        results:response.data.jobs
+        results:response.data.jobs,
+        pagination: response
       }))
     })
   }
 
-  console.log("job",job, "city", city, "data", (data.results))
+  console.log("job",job, "city", city, "data", (data.pagination))
   return (
     <>
     <Paper>
@@ -82,7 +83,7 @@ export default function SearchBar(props) {
     </div>
     </Paper>
 
-    {data.results? <Results results={data.results}/> : <h1></h1>}
+    {data.results? <Results results={data.results}/> : <></>}
 
 
     </>
