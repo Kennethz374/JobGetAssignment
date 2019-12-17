@@ -1,12 +1,8 @@
 import React from "react";
 import { makeStyles } from '@material-ui/core/styles';
-import Paper from '@material-ui/core/Paper';
-import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
-import Button from '@material-ui/core/Button';
-import Typography from '@material-ui/core/Typography';
+import {Typography,Paper,Card,CardActions,CardContent,Button} from '@material-ui/core';
 
+//dangerouseInnerSetHtml could cause potentil xss problem
 
 const useStyles = makeStyles(theme => ({
   paper:{
