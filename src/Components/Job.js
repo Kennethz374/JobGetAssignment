@@ -53,7 +53,11 @@ const useStyles = makeStyles(theme => ({
 
 export default function Job({key,companyName, location,name, min, max, snippet, posted}) {
   const classes = useStyles();
-  let formattedPost = posted
+
+  function createMarkup() {
+    return {__html: snippet};
+  }
+
   return (
     <>
     <Paper className={classes.paper} key={key}>
@@ -68,9 +72,7 @@ export default function Job({key,companyName, location,name, min, max, snippet, 
           {companyName} | {location}
         </Typography>
 
-        <Typography variant="body2" component="p">
-          {snippet}
-        </Typography>
+        <Typography variant="body2" component="p" dangerouslySetInnerHTML={createMarkup()} />
       </CardContent>
 
       <CardContent className={classes.divTwo}>
@@ -80,7 +82,7 @@ export default function Job({key,companyName, location,name, min, max, snippet, 
           ${min} - {max}
         </Typography>
         <Typography variant="body3" component="p">
-          Posted: {formattedPost}
+          Posted: {posted}
         </Typography>
       <CardActions>
         <Button className={classes.button} size="small">Apply Job</Button>

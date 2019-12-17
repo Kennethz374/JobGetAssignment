@@ -1,14 +1,10 @@
-import React, { useState } from "react";
-import {FormControl, InputLabel, Input, Button, Paper} from '@material-ui/core'
+import React, { useState, useEffect } from "react";
+import {FormControl, InputLabel, Input, Button, Paper} from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import axios from "axios"
-import Results from "./Results"
+import axios from "axios";
+import Results from "./Results";
+import { Icon, Pagination } from 'semantic-ui-react';
 
-
-
-// import useDebounce from "hooks/useDebounce";
-
-// import Loading from "components/Loading";
 
 const useStyles = makeStyles(theme => ({
   search:{
@@ -42,21 +38,34 @@ const useStyles = makeStyles(theme => ({
 export default function SearchBar(props) {
   const [job, setJob] = useState("");
   const [city, setCity] = useState("");
-
+  const [page, setPage] = useState(1)
+  const [data, setData] = useState({});
   const classes = useStyles();
-  const [data, setData] = useState({})
 
-  let handleSearch = (job,city) => {
-    axios.get(`https://api.ziprecruiter.com/jobs/v1?search=${job}&location=${city}&api_key=mthpyw9ea7zyswfuj3zur6bt55fce7qf`)
+  const handleSearch = (job,city,page) => {
+    axios.get(`https://api.ziprecruiter.com/jobs/v1?search=${job}&location=${city}&api_key=mthpyw9ea7zyswfuj3zur6bt55fce7qf&page=${page}`)
     .then(response=> {
       setData(()=>({
         results:response.data.jobs,
-        pagination: response
+        pagination: Math.round(response.data.total_jobs / 20)
       }))
     })
   }
+  useEffect((job,city,page)=>{
+    axios.get(`htps://api.ziprecruiter.com/jobs/v1?search=${job}&location=${city}&api_key=mthpyw9ea7zyswfuj3zur6bt55fce7qf&page=${page}`)
+    .then(response=> {
+      setData(()=>({
+        results:response.data.jobs,
+        pagination: Math.round(response.data.total_jobs / 20)
+      }))
+  },[page])
+  })
+  const handlePaginationChange = (e, data) => {
+    setPage(data.activePage)
+    console.log("page",page)
+  }
 
-  console.log("job",job, "city", city, "data", (data.pagination))
+  console.log("job",job, "city", city, "data", (data.results), "page",page)
   return (
     <>
     <Paper>
@@ -75,7 +84,7 @@ export default function SearchBar(props) {
           <Button className={classes.submit} 
             variant="contained" 
             color="secondary" 
-            onClick= {()=>handleSearch(job,city)}
+            onClick= {()=>handleSearch(job,city,page)}
           >
             Search
           </Button>
@@ -83,7 +92,15 @@ export default function SearchBar(props) {
     </div>
     </Paper>
 
+
     {data.results? <Results results={data.results}/> : <></>}
+    {data.results? 
+        <Pagination   
+        onPageChange={()=>handlePaginationChange}
+        defaultActivePage={1} 
+        totalPages={data.pagination} />
+      : 
+        <></>}
 
 
     </>
