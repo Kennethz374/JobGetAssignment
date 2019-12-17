@@ -49,7 +49,7 @@ export default function SearchBar(props) {
         results:response.data.jobs,
         pagination: Math.round(response.data.total_jobs / 10)
       }))
-    })
+    });
   }
 
   const handlePaginationChange = (e, data) => {
@@ -57,6 +57,10 @@ export default function SearchBar(props) {
     setTimeout(function() {
       console.log("page",page);
     }, 2000);
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
   }
 
   return (
