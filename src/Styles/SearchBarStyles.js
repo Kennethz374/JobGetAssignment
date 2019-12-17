@@ -16,7 +16,7 @@ const useStyles = makeStyles(theme => ({
       [theme.breakpoints.up('md')]:{
         width: "10%"
       },
-    marginTop: theme.spacing(4),
+    marginTop: theme.spacing(6),
     marginLeft: theme.spacing(2)
   },
   left:{
