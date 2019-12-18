@@ -1,51 +1,13 @@
 import React from "react";
-import { makeStyles } from '@material-ui/core/styles';
 import {Typography,Paper,Card,CardActions,CardContent,Button} from '@material-ui/core';
+import useStyles from "../Styles/JobStyles"
 
 //dangerouseInnerSetHtml could cause potentil xss problem
-
-const useStyles = makeStyles(theme => ({
-  paper:{
-    padding: theme.spacing(1),
-    display:"flex",
-    flexDirection: "column",
-    alignItems: "center",
-    backgroundColor: "lightgrey",
-    marginBottom:0
-  },
-  card: {
-    borderRadius: theme.spacing(2),
-    height:"auto",
-    width: "100%",
-    margin:"auto",
-    display: "flex",
-    flexDirection:"column",
-      [theme.breakpoints.up("sm")]:{
-        flexDirection: "row"
-      },
-  },
-  title: {
-    fontSize: 14,
-  },
-  divOne: {
-    width:"100%",
-    [theme.breakpoints.up('sm')]:{
-      width: "75%"
-    },
-  },
-  divTwo: {
-    width:"100%",
-    [theme.breakpoints.up('sm')]:{
-      width: "25%"
-    },
-  },
-  button:{
-    backgroundColor:"teal",
-    margin:"auto",
-    padding:theme.spacing(1),
-    width:"85%",
-  }
-}));
+const formatter = new Intl.NumberFormat('en-US', {
+  style: 'currency',
+  currency: 'USD',
+  minimumFractionDigits: 0
+})
 
 export default function Job({companyName, location,name, min, max, snippet, posted}) {
   const classes = useStyles();
@@ -61,7 +23,7 @@ export default function Job({companyName, location,name, min, max, snippet, post
       <Card className={classes.card}>
 
       <CardContent className={classes.divOne}>
-        <Typography variant="h5" component="h2">
+        <Typography variant="h5" component="h3">
           {name}
         </Typography>
         <Typography variant="h6" component="h1">
@@ -75,7 +37,7 @@ export default function Job({companyName, location,name, min, max, snippet, post
       <Typography variant="h6" component="h2">
           Salary: 
           <br/>
-          ${min} - {max}
+          {formatter.format(min)} - {formatter.format(max)}
         </Typography>
         <Typography>
           Posted: {posted}

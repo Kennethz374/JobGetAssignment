@@ -111,7 +111,7 @@ export default function SearchBar(props) {
         <Pagination   
         onPageChange={handlePaginationChange}
         defaultActivePage={page} 
-        totalPages={data.totalJobs<=500? Math.round(data.totalJobs/20) + 1 : 25} />
+        totalPages={data.totalJobs<=500? Math.floor(data.totalJobs/20) + 1 : 25} />
       : 
         <></>}
 
