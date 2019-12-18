@@ -5,7 +5,7 @@ const useStyles = makeStyles(theme => ({
     borderRadius:theme.spacing(1),
     display:"flex",
     margin:"auto",
-    backgroundColor: "darkgrey"
+    backgroundColor:"rgb(232, 240, 254)"
   },
   form: {
     display:"inline flex",
@@ -17,7 +17,7 @@ const useStyles = makeStyles(theme => ({
         width: "10%"
       },
     marginTop: theme.spacing(6),
-    marginLeft: theme.spacing(2)
+    marginLeft: theme.spacing(4)
   },
   left:{
     padding:theme.spacing(2),

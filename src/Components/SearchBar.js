@@ -8,7 +8,6 @@ import useStyles from "../Styles/SearchBarStyles";
 //API KEY
 const API = process.env.REACT_APP_API
 
-
 export default function SearchBar(props) {
   const [job, setJob] = useState("");
   const [city, setCity] = useState("");
@@ -33,6 +32,7 @@ export default function SearchBar(props) {
       behavior: "smooth"
     });
   }
+
   return (
     <>
     <Paper>
@@ -51,7 +51,7 @@ export default function SearchBar(props) {
           <Button className={classes.submit} 
             variant="contained" 
             color="secondary" 
-            onClick= {()=>handleSearch(job,city,page)}
+            onClick={()=>handleSearch(job,city,page)}
           >
             Search
           </Button>
