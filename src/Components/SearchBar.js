@@ -3,8 +3,9 @@ import {FormControl, InputLabel, Input, Button, Paper} from '@material-ui/core';
 import axios from "axios";
 import Results from "./Results";
 import { Pagination } from 'semantic-ui-react';
-import useStyles from "../Styles/SearchBarStyles"
+import useStyles from "../Styles/SearchBarStyles";
 
+const API = process.env.REACT_APP_API
 
 export default function SearchBar(props) {
   const [job, setJob] = useState("");
@@ -14,7 +15,7 @@ export default function SearchBar(props) {
   const classes = useStyles();
 
   const handleSearch = (job,city,page) => {
-    axios.get(`https://api.ziprecruiter.com/jobs/v1?search=${job}&location=${city}&api_key=mthpyw9ea7zyswfuj3zur6bt55fce7qf&page=${page}&jobs_per_page=10`)
+    axios.get(`https://api.ziprecruiter.com/jobs/v1?search=${job}&location=${city}&api_key=${API}&page=${page}&jobs_per_page=10`)
     .then(response=> {
       setData(()=>({
         results:response.data.jobs,
@@ -25,9 +26,6 @@ export default function SearchBar(props) {
 
   const handlePaginationChange = (e, data) => {
     handleSearch(job,city,data.activePage)
-    setTimeout(function() {
-      console.log("page",page);
-    }, 2000);
     window.scrollTo({
       top: 0,
       behavior: "smooth"
@@ -60,7 +58,7 @@ export default function SearchBar(props) {
     </Paper>
 
 
-    { (data.results) ? <Results results={data.results}/> : <h1></h1>}
+    { (data.results) ? <Results results={data.results}/> : <></>}
     {data.results? 
         <Pagination   
         onPageChange={handlePaginationChange}
