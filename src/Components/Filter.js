@@ -16,7 +16,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export default function Filter({open,miles,handleMileChange, handleMileClose, handleMileOpen}) {
+export default function Filter({open,miles,date,handleMileChange, handleMileClose, handleMileOpen,handleDateChange, handleDateClose, handleDateOpen}) {
   const classes = useStyles();
   return (
     <div className={classes.filter}>
@@ -27,18 +27,17 @@ export default function Filter({open,miles,handleMileChange, handleMileClose, ha
             labelId="demo-controlled-open-select-label"
             id="demo-controlled-open-select"
             open={open}
-            onClose={handleMileClose}
-            onOpen={handleMileOpen}
-            value={miles}
-            onChange={handleMileChange}
+            onClose={handleDateClose}
+            onOpen={handleDateOpen}
+            value={date}
+            onChange={handleDateChange}
           >
-            <MenuItem value={1000}>Default</MenuItem>
-            <MenuItem value={5}>5 miles</MenuItem>
-            <MenuItem value={10}>10 miles</MenuItem>
-            <MenuItem value={15}>15 miles</MenuItem>
-            <MenuItem value={20}>20 miles</MenuItem>
-            <MenuItem value={25}>25 miles</MenuItem>
-            <MenuItem value={30}>30 miles</MenuItem>
+            <MenuItem value={100}>Any</MenuItem>
+            <MenuItem value={1}>Last 24 hours</MenuItem>
+            <MenuItem value={3}>3 days</MenuItem>
+            <MenuItem value={7}>7 days</MenuItem>
+            <MenuItem value={30}>30 days</MenuItem>
+
           </Select>
         </FormControl>
       </div>

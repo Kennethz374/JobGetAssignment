@@ -14,12 +14,15 @@ export default function SearchBar(props) {
   const [city, setCity] = useState("");
   const [page] = useState(1)
   const [data, setData] = useState({});
-  const [miles, setMiles]=useState(25)
-  const [open,setOpen]=useState(false)
+  const [miles, setMiles]=useState(100) //default to a high number that include everything
+  const [date, setDate]= useState(1000)
+  const [openMile,setOpenMile]=useState(false)
+  const [openDate,setOpenDate]=useState(false)
+
   const classes = useStyles();
 
   const handleSearch = (job,city,page) => {
-    axios.get(`https://api.ziprecruiter.com/jobs/v1?search=${job}&location=${city}&api_key=${API}&page=${page}&radius_miles=${miles}`)
+    axios.get(`https://api.ziprecruiter.com/jobs/v1?search=${job}&location=${city}&api_key=${API}&page=${page}&radius_miles=${miles}&days_ago=${date}`)
     .then(response=> {
       setData(()=>({
         results:response.data.jobs,
@@ -39,13 +42,22 @@ export default function SearchBar(props) {
   const handleMileChange = event => {
     setMiles(event.target.value);
   };
-
   const handleMileClose = () => {
-    setOpen(false);
+    setOpenMile(false);
+  };
+  const handleMileOpen = () => {
+    setOpenMile(true);
   };
 
-  const handleMileOpen = () => {
-    setOpen(true);
+
+  const handleDateChange = event => {
+    setDate(event.target.value);
+  };
+  const handleDateClose = () => {
+    setOpenDate(false);
+  };
+  const handleDateOpen = () => {
+    setOpenDate(true);
   };
 
   return (
@@ -80,10 +92,16 @@ export default function SearchBar(props) {
       <div>
         <Filter 
         miles={miles} 
-        open={open}
+        openMile={openMile}
         handleMileChange={handleMileChange} 
         handleMileClose={handleMileClose} 
-        handleMileOpen={handleMileOpen}/>
+        handleMileOpen={handleMileOpen}
+        date={date} 
+        openDate={openDate}
+        handleDateChange={handleDateChange} 
+        handleDateClose={handleDateClose} 
+        handleDateOpen={handleDateOpen}
+        />
       </div>
     </Paper>
 
