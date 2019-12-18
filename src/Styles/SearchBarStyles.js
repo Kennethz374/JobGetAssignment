@@ -1,31 +1,37 @@
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles(theme => ({
-  search:{
-    borderRadius:theme.spacing(1),
-    display:"flex",
-    margin:"auto",
+  form:{
+    display:"block",
+      [theme.breakpoints.up("md")]:{
+        display:"flex"
+      },
+    justifyContent:"center",
     backgroundColor:"rgb(232, 240, 254)"
   },
-  form: {
-    display:"inline flex",
+  left:{
+    display:"flex",
+    justifyContent:"center",
+    padding:theme.spacing(1),
     width:"100%",
   },
-  submit:{
+  middle: {
+    display:"flex",
+    justifyContent:"center",
+    padding:theme.spacing(1),
+    width:"100%",
+  },
+  right:{
+    display:"flex",
+    justifyContent:"center",
     width: "100%", 
       [theme.breakpoints.up('md')]:{
         width: "10%"
       },
-    marginTop: theme.spacing(6),
-    marginLeft: theme.spacing(4)
   },
-  left:{
-    padding:theme.spacing(2),
-    width:"40%",
-  },
-  right: {
-    padding:theme.spacing(2),
-    width:"40%",
+  formControl:{
+    margin: theme.spacing(2),
+    minWidth: 200,
   }
 }));
 
