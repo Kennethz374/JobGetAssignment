@@ -5,7 +5,9 @@ import Results from "./Results";
 import { Pagination } from 'semantic-ui-react';
 import useStyles from "../Styles/SearchBarStyles";
 
+//API KEY
 const API = process.env.REACT_APP_API
+
 
 export default function SearchBar(props) {
   const [job, setJob] = useState("");
@@ -15,11 +17,11 @@ export default function SearchBar(props) {
   const classes = useStyles();
 
   const handleSearch = (job,city,page) => {
-    axios.get(`https://api.ziprecruiter.com/jobs/v1?search=${job}&location=${city}&api_key=${API}&page=${page}&jobs_per_page=10`)
+    axios.get(`https://api.ziprecruiter.com/jobs/v1?search=${job}&location=${city}&api_key=${API}&page=${page}&jobs_per_page=20`)
     .then(response=> {
       setData(()=>({
         results:response.data.jobs,
-        pagination: Math.round(response.data.total_jobs / 10)
+        pagination: Math.round(response.data.total_jobs / 20)
       }))
     });
   }
