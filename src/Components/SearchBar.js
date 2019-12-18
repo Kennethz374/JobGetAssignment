@@ -20,7 +20,6 @@ export default function SearchBar(props) {
     .then(response=> {
       setData(()=>({
         results:response.data.jobs,
-        pagination: Math.round(response.data.total_jobs / 20)
       }))
     });
   }
@@ -65,7 +64,7 @@ export default function SearchBar(props) {
         <Pagination   
         onPageChange={handlePaginationChange}
         defaultActivePage={page} 
-        totalPages={data.pagination} />
+        totalPages={25} />
       : 
         <></>}
 
