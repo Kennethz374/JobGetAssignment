@@ -54,7 +54,7 @@ export default function Filter({open,miles,date,handleMileChange, handleMileClos
             value={miles}
             onChange={handleMileChange}
           >
-            <MenuItem value={1000}>Default</MenuItem>
+            <MenuItem value={100}>Default</MenuItem>
             <MenuItem value={5}>5 miles</MenuItem>
             <MenuItem value={10}>10 miles</MenuItem>
             <MenuItem value={15}>15 miles</MenuItem>
