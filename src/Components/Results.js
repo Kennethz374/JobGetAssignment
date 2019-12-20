@@ -3,7 +3,6 @@ import Job from "./Job";
 
 export default function Results({results}) {
     return (
-
       results.map(result => {
       return <Job 
       key={result.id}
