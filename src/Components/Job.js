@@ -2,7 +2,7 @@ import React from "react";
 import {Typography,Paper,Card,CardActions,CardContent,Button} from '@material-ui/core';
 import useStyles from "../Styles/JobStyles"
 
-//dangerouseInnerSetHtml could cause potentil xss problem
+//dangerouseInnerSetHtml could cause potential XSS problem
 const formatter = new Intl.NumberFormat('en-US', {
   style: 'currency',
   currency: 'USD',

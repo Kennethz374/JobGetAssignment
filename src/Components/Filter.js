@@ -1,20 +1,10 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
+import useStyles from "../Styles/FilterStyles"
 
-const useStyles = makeStyles(theme => ({
-  filter:{
-    display:"flex",
-    justifyContent:"center"
-  },
-  formControl: {
-    margin: theme.spacing(2),
-    minWidth: 200,
-  },
-}));
 
 export default function Filter({open,miles,date,handleMileChange, handleMileClose, handleMileOpen,handleDateChange, handleDateClose, handleDateOpen}) {
   const classes = useStyles();
