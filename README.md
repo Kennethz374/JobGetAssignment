@@ -25,7 +25,7 @@ run all spec tests
 ## Tech Stack:
 React(Material-Ui and Semantic-Ui) - Front end
 
-Zippo recuirter API
+Ziprecuiter API
 
 Cypress - For Testing
 
@@ -41,6 +41,11 @@ In order to unescape the react html format I used the "dangerouslySetInnerHTML" 
 For the end to end test, I use cypress(testing framework) to do an end to end automating test. Since I only have one week to finish the challenge, the tests would be a topic that I need to revisit to make them more perfect for the application. 
 
 ## Demo 
+### Home
+!["Home"] (https://github.com/Kennethz374/JobGetAssignment/blob/master/public/docs/Home.gif?raw=true)
+
+### Search & Filter
+!["Search_Filter"] (https://github.com/Kennethz374/JobGetAssignment/blob/master/public/docs/SearchNError.gif?raw=true)
 
 ### Testing
 !["Tesitng"](https://github.com/Kennethz374/JobGetAssignment/blob/master/public/docs/CypressDemo.gif?raw=true)
