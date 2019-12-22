@@ -7,11 +7,12 @@ import useStyles from "../Styles/SearchBarStyles";
 import Filter from "../Components/Filter"
 import Loading from "./Loading"
 import useAppState from "../Hooks/useAppState"
+
 //API KEY
 const API = process.env.REACT_APP_API
 
 
-export default function SearchBar(props) {
+export default function SearchBar() {
   const classes = useStyles();
   const initialState = {
     data: {},
@@ -118,8 +119,6 @@ export default function SearchBar(props) {
         onPageChange={handlePaginationChange}
         defaultActivePage={state.page} 
         totalPages={state.data.total_jobs<=500? Math.floor(state.data.total_jobs/20) + 1 : 25} />}
-
-
     </>
   );
 }
