@@ -9,7 +9,7 @@ Use the package manager [npm](https://nodejs.org/) to install JobGet Search. At 
 npm install
 ```
 
-after all dependencies are installed completely
+after all dependencies are installed
 ```bash
 npm start
 ```
@@ -30,7 +30,7 @@ Ziprecuiter API
 Cypress - For Testing
 
 ## Notes for this project:
-I could write a condition to not show jobs on the first render but I figure the page would look so empty. So I decided to render something even at the first render to make the page looks a bit more contents.
+I could write a condition to not show jobs on the first render but I figure the page would look so empty. So I decided to render something even at the first render to make the page to have a bit more contents.
 
 Search bar on the page is responsive
 
@@ -43,6 +43,9 @@ For the end to end test, I use cypress(testing framework) to do an end to end au
 ## Demo 
 ### Home
 !["Home"](https://github.com/Kennethz374/JobGetAssignment/blob/master/public/docs/Home.gif?raw=true)
+
+### Responsive
+!["Responsive"](https://github.com/Kennethz374/JobGetAssignment/blob/master/public/docs/ResponsiveSearch.gif?raw=true)
 
 ### Search & Filter
 !["Search_Filter"](https://github.com/Kennethz374/JobGetAssignment/blob/master/public/docs/SearchNError.gif?raw=true)
