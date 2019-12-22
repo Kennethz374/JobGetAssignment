@@ -10,6 +10,7 @@ import useAppState from "../Hooks/useAppState"
 //API KEY
 const API = process.env.REACT_APP_API
 
+
 export default function SearchBar(props) {
   const classes = useStyles();
   const initialState = {
@@ -43,7 +44,7 @@ export default function SearchBar(props) {
   useEffect(()=>{
     handleSearch()
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  },[state]) 
+  },[state.miles,state.date,state.page,state.job,state.city]) 
   //if and state changes it will call handleSearch and re render
 
   const handleSearch = () => {
