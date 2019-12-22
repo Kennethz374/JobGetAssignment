@@ -10,7 +10,7 @@ import useAppState from "../Hooks/useAppState"
 
 //API KEY
 const API = process.env.REACT_APP_API
-
+console.log("123123123  ")
 
 export default function SearchBar() {
   const classes = useStyles();
