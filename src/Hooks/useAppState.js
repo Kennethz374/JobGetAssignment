@@ -1,13 +1,10 @@
 import {useState} from "react";
 export default initialState => {
   const [state, setState] = useState(initialState);
-  const [jobTitle, setJobTitle] = useState("");
-  const [cityName, setCityName] = useState("");
+
   return {
     state,
     setState,
-    jobTitle,
-    cityName,
     handlePaginationChange: (e, data) => {
       setState({...state,page:data.activePage})
       window.scrollTo({
@@ -33,12 +30,6 @@ export default initialState => {
     },
     handleDateOpen: () => {
       setState({...state,OpenDate:true})
-    },
-    handleJobChange: (event) => {
-      setJobTitle(event.target.value)
-    },
-    handleCityChange: (event) => {
-      setCityName(event.target.value)
     }
   }
 }
