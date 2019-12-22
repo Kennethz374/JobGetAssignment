@@ -10,7 +10,6 @@ import useAppState from "../Hooks/useAppState"
 
 //API KEY
 const API = process.env.REACT_APP_API
-console.log("123123123  ")
 
 export default function SearchBar() {
   const classes = useStyles();
@@ -23,7 +22,6 @@ export default function SearchBar() {
     date: 100,
     openMile:false,
     openDate:false,
-    loading:false
   }
   const {
     state, 
@@ -49,7 +47,6 @@ export default function SearchBar() {
       setState((state)=>({
         ...state,
         data:response.data,
-        loading:false
       }));
     })
     .catch(error => {
@@ -113,12 +110,16 @@ export default function SearchBar() {
     </Paper>
 
     {state.data.jobs? <Results results={state.data.jobs}/> : <Loading/>}
-    {state.data.total_jobs === 0 && <h1>Sorry! No Result Matches</h1>}
-    {state.data.jobs&&
+    {state.data.total_jobs === 0 && <h1 style={{display: 'flex', justifyContent: 'center'}}>Sorry! No Result Matches</h1>}
+    {state.data.jobs&&<>
+        <div style={{display: 'flex', justifyContent: 'center'}}>
         <Pagination   
         onPageChange={handlePaginationChange}
         defaultActivePage={state.page} 
-        totalPages={state.data.total_jobs<=500? Math.floor(state.data.total_jobs/20) + 1 : 25} />}
+        totalPages={state.data.total_jobs<=500? Math.floor(state.data.total_jobs/20) : 25} />
+        </div>
+        </>
+        }
     </>
   );
 }
