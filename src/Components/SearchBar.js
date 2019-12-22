@@ -10,7 +10,7 @@ import useAppState from "../Hooks/useAppState"
 
 //API KEY
 const API = process.env.REACT_APP_API
-
+const centerText = {display: 'flex', justifyContent: 'center'}
 export default function SearchBar() {
   const classes = useStyles();
   const initialState = {
@@ -22,7 +22,7 @@ export default function SearchBar() {
     date: 100,
     openMile:false,
     openDate:false,
-    loading:false
+    error:false
   }
   const {
     state, 
@@ -52,6 +52,7 @@ export default function SearchBar() {
     })
     .catch(error => {
       console.log(error)
+      setState({...state,error:true})
     })
   }
 
@@ -109,11 +110,11 @@ export default function SearchBar() {
         />
       </div>
     </Paper>
-
+    {state.error===true && <h1 style={centerText}>Opps, Something Wrong With Our Server, Please Come back later</h1>}
     {state.data.jobs? <Results results={state.data.jobs}/> : <Loading/>}
-    {state.data.total_jobs === 0 && <h1 style={{display: 'flex', justifyContent: 'center'}}>Sorry! No Result Matches</h1>}
+    {state.data.total_jobs === 0 && <h1 style={centerText}>Sorry! No Result Matches</h1>}
     {state.data.jobs&&<>
-        <div style={{display: 'flex', justifyContent: 'center'}}>
+        <div style={centerText}>
         <Pagination   
         onPageChange={handlePaginationChange}
         defaultActivePage={state.page} 
