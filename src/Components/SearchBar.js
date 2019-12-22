@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect,useCallback } from "react";
 import {FormControl, InputLabel, Input, Button, Paper} from '@material-ui/core';
 import axios from "axios";
 import Results from "./Results";
@@ -9,6 +9,7 @@ import Loading from "./Loading"
 import useAppState from "../Hooks/useAppState"
 //API KEY
 const API = process.env.REACT_APP_API
+
 
 export default function SearchBar(props) {
   const classes = useStyles();
@@ -26,8 +27,6 @@ export default function SearchBar(props) {
   const {
     state, 
     setState,
-    jobTitle,
-    cityName,
     handlePaginationChange,
     handleDateChange,
     handleDateClose,
@@ -35,15 +34,12 @@ export default function SearchBar(props) {
     handleMileChange,
     handleMileClose,
     handleMileOpen,
-    handleJobChange,
-    handleCityChange
   }=useAppState(initialState);
-
 
   useEffect(()=>{
     handleSearch()
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  },[state]) 
+  },[state.miles,state.date,state.page,state.job,state.city]) 
   //if and state changes it will call handleSearch and re render
 
   const handleSearch = () => {
@@ -60,21 +56,29 @@ export default function SearchBar(props) {
     })
   }
 
+  const onSubmit = useCallback(e => {
+    e.preventDefault()
+    const { job, city } = e.target
+    setState({...state, job: job.value, city: city.value })
+    e.target.reset()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
   return (
     <>
     <Paper>
-        <form className={classes.form}>
+        <form className={classes.form} onSubmit={onSubmit}>
           <div className={classes.left}>
             <FormControl fullWidth  className={classes.formControl}>
                 <InputLabel htmlFor="job" >Jobs</InputLabel>
-                <Input id="job" name="Job title" autoFocus value={jobTitle} onChange={handleJobChange}>
+                <Input type="text" id="job" name="job" autoFocus >
                 </Input>
               </FormControl>
           </div>
           <div className={classes.middle}> 
             <FormControl fullWidth variant='outlined'  className={classes.formControl}>
               <InputLabel htmlFor="city">City</InputLabel>
-              <Input id="city" name="city" autoFocus value={cityName} onChange={handleCityChange}>
+              <Input id="city" name="city" autoFocus type="text">
               </Input>
             </FormControl>
           </div>
@@ -82,12 +86,14 @@ export default function SearchBar(props) {
             <Button
               variant="contained" 
               color="secondary" 
-              onClick={()=>handleSearch(setState({...state, job:jobTitle,city:cityName}))}
+              type="submit"
             >
               Search
             </Button>
           </div>
         </form>
+
+        
 
       <div>
         <Filter 
