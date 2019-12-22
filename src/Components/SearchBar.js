@@ -22,6 +22,7 @@ export default function SearchBar() {
     date: 100,
     openMile:false,
     openDate:false,
+    loading:false
   }
   const {
     state, 
@@ -36,7 +37,7 @@ export default function SearchBar() {
   }=useAppState(initialState);
 
   useEffect(()=>{
-    handleSearch()
+      handleSearch()
     // eslint-disable-next-line react-hooks/exhaustive-deps
   },[state.miles,state.date,state.page,state.job,state.city]) 
   //if and state changes it will call handleSearch and re render

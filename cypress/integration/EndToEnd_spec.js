@@ -37,41 +37,42 @@ describe('End to End Funtionality test', function() {
 
   it('pagination works when user click another page', function () {
     cy.get('form').within(() => {
-      cy.get('input[name="job"]').type('assembler')
-      cy.get('input[name="city"]').type('boston')
+      cy.get('input[name="job"]').type('developer')
+      cy.get('input[name="city"]').type('vancouver')
       cy.get('button').contains('Search').click()
     })
     cy.wait(500)
-    cy.get('p').contains('Connexion strives to be the unrivaled staffing solution for both job seekers and hiring organizations by expertly connecting talent with opportunity. We build world class teams for our customers, and')
+    cy.get('p').contains('Java Application Developer, Master Summary: The successful candidate must be knowledgeable of and experienced with web and desktop application software design and development environments')
 
     cy.get('div[role="navigation"]').within(()=>{
       cy.get('a.item').contains('2').click()
     })
     cy.wait(500)
-    cy.get('div').contains('Description: PRIMARY RESPONSIBILITY: • Performs electronic, mechanical or electro-mechanical assembly operations for semi-finished and finished assemblies. • Follows manufacturing methods and')
+    cy.get('div').contains('Ruby on Rails Software Engineer Summary: An experienced Software Engineer with a proven track record of implementing and maintaining cloud-based systems in Ruby on Rails within an AWS environment, as')
 
   })
 
   it('make sure when filter is select the components re-render a different set of data', function() {
     cy.get('form').within(() => {
-      cy.get('input[name="job"]').type('assembler')
-      cy.get('input[name="city"]').type('boston')
+      cy.get('input[name="job"]').type('developer')
+      cy.get('input[name="city"]').type('vancouver')
       cy.get('button').contains('Search').click()
     })
     cy.wait(500)
     cy.get('div').contains('Any').click()
     cy.get('li[data-value="1"]').click()
     cy.wait(1000)
-    cy.get('p').contains('to assemble a plan and execute on the details Experience with protocol, ICF, CRF, CSR development and review Proficient with MS Office Suite (Excel, Word and PowerPoint) and MS Project Ability to')
+    cy.get('div').contains('yesterday')
 
     cy.get('form').within(() => {
-      cy.get('input[name="job"]').type('assembler')
-      cy.get('input[name="city"]').type('boston')
+      cy.get('input[name="job"]').type('developer')
+      cy.get('input[name="city"]').type('vancouver')
       cy.get('button').contains('Search').click()
     })
     cy.wait(500)
     cy.get('div').contains('Default').click()
     cy.get('li[data-value="5"]').click()
-    cy.get('p').contains('Piaggio Fast Forward (PFF) is hiring Assemblers to join our new team responsible for the assembly of our first product, gita. As an early member of the team, you will assist in design, test, and')
+    cy.wait(1000)
+    cy.get('p').contains('Backend Software Engineer Direct hire Portland, OR Experience & Skills We are a fast-paced team, working together to build solutions in a financial environment using best practices. You must be')
   })
 })
