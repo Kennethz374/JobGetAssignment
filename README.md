@@ -42,10 +42,10 @@ For the end to end test, I use cypress(testing framework) to do an end to end au
 
 ## Demo 
 ### Home
-!["Home"] (https://github.com/Kennethz374/JobGetAssignment/blob/master/public/docs/Home.gif?raw=true)
+!["Home"](https://github.com/Kennethz374/JobGetAssignment/blob/master/public/docs/Home.gif?raw=true)
 
 ### Search & Filter
-!["Search_Filter"] (https://github.com/Kennethz374/JobGetAssignment/blob/master/public/docs/SearchNError.gif?raw=true)
+!["Search_Filter"](https://github.com/Kennethz374/JobGetAssignment/blob/master/public/docs/SearchNError.gif?raw=true)
 
 ### Testing
 !["Tesitng"](https://github.com/Kennethz374/JobGetAssignment/blob/master/public/docs/CypressDemo.gif?raw=true)
