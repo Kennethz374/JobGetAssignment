@@ -112,7 +112,7 @@ export default function SearchBar(props) {
     </Paper>
 
     {state.data.jobs? <Results results={state.data.jobs}/> : <Loading/>}
-    {state.data.jobs===0 && <h1>Sorry! No Result Matches</h1>}
+    {state.data.total_jobs===0 && <h1>Sorry! No Result Matches</h1>}
     {state.data.jobs&&
         <Pagination   
         onPageChange={handlePaginationChange}
