@@ -77,7 +77,7 @@ export default function SearchBar() {
           <div className={classes.middle}> 
             <FormControl fullWidth variant='outlined'  className={classes.formControl}>
               <InputLabel htmlFor="city">City</InputLabel>
-              <Input id="city" name="city" autoFocus type="text">
+              <Input id="city" name="city" type="text">
               </Input>
             </FormControl>
           </div>
