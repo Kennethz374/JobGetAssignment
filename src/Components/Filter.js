@@ -1,12 +1,21 @@
-import React from 'react';
-import InputLabel from '@material-ui/core/InputLabel';
-import MenuItem from '@material-ui/core/MenuItem';
-import FormControl from '@material-ui/core/FormControl';
-import Select from '@material-ui/core/Select';
-import useStyles from "../Styles/FilterStyles"
+import React from "react";
+import InputLabel from "@material-ui/core/InputLabel";
+import MenuItem from "@material-ui/core/MenuItem";
+import FormControl from "@material-ui/core/FormControl";
+import Select from "@material-ui/core/Select";
+import useStyles from "../Styles/FilterStyles";
 
-
-export default function Filter({open,miles,date,handleMileChange, handleMileClose, handleMileOpen,handleDateChange, handleDateClose, handleDateOpen}) {
+export default function Filter({
+  open,
+  miles,
+  date,
+  handleMileChange,
+  handleMileClose,
+  handleMileOpen,
+  handleDateChange,
+  handleDateClose,
+  handleDateOpen
+}) {
   const classes = useStyles();
   return (
     <div className={classes.filter}>
@@ -27,7 +36,6 @@ export default function Filter({open,miles,date,handleMileChange, handleMileClos
             <MenuItem value={3}>3 days</MenuItem>
             <MenuItem value={7}>7 days</MenuItem>
             <MenuItem value={30}>30 days</MenuItem>
-
           </Select>
         </FormControl>
       </div>
